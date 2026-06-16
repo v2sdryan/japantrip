@@ -69,6 +69,23 @@ const kindLabel: Record<StopKind, string> = {
   kids: '親子',
 };
 
+const getPosterStops = (day: DayPlan) =>
+  day.routeStops.filter((stop) => stop.kind !== 'drive' && stop.kind !== 'hotel').slice(0, 5);
+
+const getPosterHighlights = (day: DayPlan) => {
+  const highlights = day.routeStops.filter((stop) => ['sight', 'kids', 'onsen', 'food'].includes(stop.kind));
+  return highlights.length >= 3 ? highlights.slice(0, 3) : day.routeStops.slice(0, 3);
+};
+
+const getRouteLeg = (stop: Stop) => {
+  if (!stop.driveFromPrevious) {
+    return '';
+  }
+  const timeMatch = stop.driveFromPrevious.match(/約\s*([^，]+?)(?:，|$)/);
+  const compactTime = timeMatch?.[1] ?? (stop.driveFromPrevious.includes('步行') ? '步行' : stop.driveFromPrevious);
+  return stop.distanceFromPrevious ? `${compactTime} · ${stop.distanceFromPrevious}` : compactTime;
+};
+
 function App() {
   const [selectedDay, setSelectedDay] = useState(days[0]);
   const [activeStop, setActiveStop] = useState<Stop | null>(selectedDay.routeStops[0]);
@@ -108,44 +125,69 @@ function App() {
         <div className="poster-grid">
           {days.map((day) => {
             const suggestion = dayVisualSuggestions[day.day];
+            const posterStops = getPosterStops(day);
+            const highlights = getPosterHighlights(day);
             return (
               <article className="poster-card" key={day.day}>
                 <div className="poster-sheet" aria-label={`Day ${day.day} ${day.title} 圖文版行程建議`}>
                   <img className="poster-art" src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
-                  <div className="poster-header">
-                    <span>Day {day.day} · {day.date}</span>
-                    <h3>{day.title}</h3>
+                  <div className="poster-hero">
+                    <img src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
+                    <div className="poster-title">
+                      <span>Day {day.day} · {day.date}</span>
+                      <h3>{day.title}</h3>
+                      <p>{day.base}</p>
+                    </div>
+                    <p className="poster-bubble">{suggestion.bubble}</p>
                   </div>
-                  <div className="poster-route" aria-label="當日路線">
-                    {day.routeStops.map((stop, index) => (
-                      <div className="poster-stop" key={`${stop.id}-${index}`}>
-                        {index > 0 && (
-                          <span className="poster-leg">
-                            {stop.driveFromPrevious}
-                            {stop.distanceFromPrevious ? ` · ${stop.distanceFromPrevious}` : ''}
-                          </span>
-                        )}
-                        <strong>
-                          {stop.time} · {stop.name}
-                        </strong>
-                      </div>
+
+                  <div className="poster-map" aria-label="當日迷你路線">
+                    <div className="poster-map-head">
+                      <span>自駕路線</span>
+                      <b>{day.driveTotal}</b>
+                    </div>
+                    <ol>
+                      {posterStops.map((stop, index) => (
+                        <li key={`${stop.id}-${index}`}>
+                          <span className="poster-pin">{index + 1}</span>
+                          <div>
+                            {index > 0 && <small>{getRouteLeg(stop)}</small>}
+                            <strong>{stop.name}</strong>
+                            <em>{stop.time}</em>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+
+                  <div className="poster-highlight-strip" aria-label="沿路推薦景點">
+                    {highlights.map((stop, index) => {
+                      const Icon = kindIcon[stop.kind];
+                      return (
+                        <div className="poster-highlight" key={`${stop.id}-${index}`}>
+                          <img src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
+                          <span>{index + 1}</span>
+                          <Icon size={15} />
+                          <strong>{stop.name}</strong>
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  <div className="poster-food-strip" aria-label="必吃美食">
+                    <b>必吃美食</b>
+                    {day.foodFocus.slice(0, 3).map((food, index) => (
+                      <span key={food}>
+                        <Soup size={15} />
+                        {index + 1}. {food}
+                      </span>
                     ))}
                   </div>
-                  <p className="poster-bubble">{suggestion.bubble}</p>
-                  <dl className="poster-notes">
-                    <div>
-                      <dt>景點</dt>
-                      <dd>{suggestion.focus}</dd>
-                    </div>
-                    <div>
-                      <dt>美食</dt>
-                      <dd>{day.foodFocus.slice(0, 3).join('、')}</dd>
-                    </div>
-                    <div>
-                      <dt>自駕提醒</dt>
-                      <dd>{suggestion.tip}</dd>
-                    </div>
-                  </dl>
+
+                  <div className="poster-footer-note">
+                    <span>自駕提醒</span>
+                    <p>{suggestion.tip}</p>
+                  </div>
                 </div>
               </article>
             );

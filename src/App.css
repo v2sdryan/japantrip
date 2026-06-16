@@ -655,10 +655,16 @@ main {
 .poster-sheet {
   position: relative;
   display: grid;
+  grid-template-columns: 1.2fr 0.78fr;
+  grid-template-areas:
+    'hero map'
+    'highlights highlights'
+    'food food'
+    'footer footer';
   gap: 12px;
-  min-height: 840px;
+  min-height: 900px;
   overflow: hidden;
-  padding: 18px;
+  padding: 16px;
   border-radius: 8px;
   background: #fff3f7;
   color: var(--ink);
@@ -680,22 +686,54 @@ main {
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, rgba(255, 247, 250, 0.96) 0%, rgba(255, 247, 250, 0.68) 24%, rgba(255, 255, 255, 0.08) 47%, rgba(255, 250, 244, 0.92) 100%),
-    radial-gradient(circle at 88% 36%, rgba(255, 255, 255, 0.9), transparent 24%);
+    linear-gradient(180deg, rgba(255, 249, 251, 0.55), rgba(255, 255, 255, 0.7)),
+    radial-gradient(circle at 15% 14%, rgba(255, 255, 255, 0.54), transparent 30%),
+    radial-gradient(circle at 86% 44%, rgba(254, 238, 217, 0.86), transparent 28%);
 }
 
-.poster-header {
-  padding: 16px 17px;
+.poster-hero {
+  position: relative;
+  grid-area: hero;
+  height: 360px;
+  min-height: 360px;
+  overflow: hidden;
+  border: 2px solid rgba(236, 128, 126, 0.28);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 26px rgba(42, 32, 39, 0.12);
+}
+
+.poster-hero > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 247, 250, 0.86));
+}
+
+.poster-title {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+  padding: 14px;
   border: 2px solid rgba(236, 128, 126, 0.38);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 10px 22px rgba(42, 32, 39, 0.1);
 }
 
-.poster-header span {
+.poster-title span {
   display: inline-flex;
   width: fit-content;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
   padding: 5px 9px;
   border-radius: 999px;
   color: var(--white);
@@ -704,16 +742,272 @@ main {
   font-weight: 900;
 }
 
-.poster-header h3 {
+.poster-title h3 {
   margin: 0;
   color: var(--ink);
-  font-size: 1.55rem;
+  font-size: 1.45rem;
   line-height: 1.14;
 }
 
-.poster-route {
+.poster-title p {
+  margin: 7px 0 0;
+  color: var(--coral);
+  font-weight: 900;
+}
+
+.poster-bubble {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 1;
+  width: min(46%, 210px);
+  margin: 0;
+  padding: 12px 13px;
+  border: 2px solid rgba(17, 118, 122, 0.35);
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 0.86rem;
+  font-weight: 900;
+  line-height: 1.36;
+  box-shadow: 0 10px 22px rgba(42, 32, 39, 0.1);
+}
+
+.poster-map {
+  grid-area: map;
+  padding: 13px;
+  border: 2px solid rgba(17, 118, 122, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 26px rgba(42, 32, 39, 0.1);
+}
+
+.poster-map-head {
   display: grid;
   gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(17, 118, 122, 0.25);
+}
+
+.poster-map-head span {
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--white);
+  background: var(--coral);
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.poster-map-head b {
+  color: var(--lake-dark);
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.poster-map ol {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.poster-map li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+}
+
+.poster-pin {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--lake);
+  font-size: 0.78rem;
+  font-weight: 900;
+  box-shadow: 0 5px 12px rgba(17, 118, 122, 0.25);
+}
+
+.poster-map li div {
+  display: grid;
+  gap: 3px;
+  padding-bottom: 9px;
+  border-bottom: 1px dotted rgba(17, 118, 122, 0.22);
+}
+
+.poster-map li:last-child div {
+  border-bottom: 0;
+}
+
+.poster-map small {
+  color: var(--coral);
+  font-size: 0.66rem;
+  font-weight: 900;
+  line-height: 1.28;
+}
+
+.poster-map strong {
+  color: var(--lake-dark);
+  font-size: 0.82rem;
+  line-height: 1.24;
+}
+
+.poster-map em {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.poster-highlight-strip {
+  grid-area: highlights;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.poster-highlight {
+  position: relative;
+  height: 145px;
+  min-height: 145px;
+  overflow: hidden;
+  border: 2px solid rgba(236, 128, 126, 0.22);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 10px 20px rgba(42, 32, 39, 0.1);
+}
+
+.poster-highlight img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-highlight:nth-child(2) img {
+  object-position: center;
+}
+
+.poster-highlight:nth-child(3) img {
+  object-position: bottom;
+}
+
+.poster-highlight::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(20, 37, 42, 0.6));
+}
+
+.poster-highlight span,
+.poster-highlight svg,
+.poster-highlight strong {
+  position: absolute;
+  z-index: 1;
+}
+
+.poster-highlight span {
+  top: 9px;
+  left: 9px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--lake);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.poster-highlight svg {
+  top: 15px;
+  right: 12px;
+  color: var(--white);
+}
+
+.poster-highlight strong {
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  color: var(--white);
+  font-size: 0.86rem;
+  line-height: 1.18;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.38);
+}
+
+.poster-food-strip {
+  grid-area: food;
+  display: grid;
+  grid-template-columns: 1fr repeat(3, minmax(0, 1.4fr));
+  gap: 9px;
+  align-items: stretch;
+}
+
+.poster-food-strip b,
+.poster-food-strip span {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(42, 32, 39, 0.08);
+}
+
+.poster-food-strip b {
+  justify-content: center;
+  color: var(--white);
+  background: var(--green);
+  font-size: 0.9rem;
+}
+
+.poster-food-strip span {
+  gap: 7px;
+  color: var(--coral);
+  font-size: 0.8rem;
+  font-weight: 900;
+  line-height: 1.28;
+}
+
+.poster-food-strip svg {
+  flex: 0 0 auto;
+  color: var(--lake);
+}
+
+.poster-footer-note {
+  grid-area: footer;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 11px 13px;
+  border: 2px dashed rgba(17, 118, 122, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.poster-footer-note span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--white);
+  background: var(--lake);
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.poster-footer-note p {
+  margin: 0;
+  color: var(--ink);
+  font-weight: 900;
+  line-height: 1.35;
 }
 
 .poster-stop {
@@ -737,47 +1031,6 @@ main {
   font-size: 0.7rem;
   font-weight: 900;
   line-height: 1.28;
-}
-
-.poster-bubble {
-  margin: 0;
-  padding: 13px 15px;
-  border: 2px solid rgba(17, 118, 122, 0.35);
-  border-radius: 8px;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.88);
-  font-size: 0.92rem;
-  font-weight: 900;
-  line-height: 1.42;
-  box-shadow: 0 10px 22px rgba(42, 32, 39, 0.1);
-}
-
-.poster-notes {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-}
-
-.poster-notes div {
-  padding: 12px 13px;
-  border: 1px solid rgba(224, 132, 102, 0.22);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.91);
-  box-shadow: 0 8px 18px rgba(42, 32, 39, 0.08);
-}
-
-.poster-notes dt {
-  margin-bottom: 4px;
-  color: var(--lake);
-  font-size: 0.76rem;
-  font-weight: 900;
-}
-
-.poster-notes dd {
-  margin: 0;
-  color: var(--coral);
-  font-weight: 900;
-  line-height: 1.42;
 }
 
 .food-card {
@@ -985,37 +1238,65 @@ main {
   }
 
   .poster-sheet {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'hero'
+      'map'
+      'highlights'
+      'food'
+      'footer';
     min-height: 0;
-    padding: 15px;
+    padding: 13px;
   }
 
-  .poster-header {
-    padding: 14px;
+  .poster-hero {
+    height: 320px;
+    min-height: 330px;
   }
 
-  .poster-header h3 {
-    font-size: 1.28rem;
+  .poster-hero > img {
+    height: 100%;
   }
 
-  .poster-route {
-    max-width: none;
+  .poster-title {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 12px;
+  }
+
+  .poster-title h3 {
+    font-size: 1.25rem;
   }
 
   .poster-bubble {
-    width: auto;
-    font-size: 0.86rem;
+    top: 12px;
+    right: 12px;
+    width: min(54%, 210px);
+    font-size: 0.78rem;
   }
 
-  .poster-notes {
-    gap: 8px;
+  .poster-highlight-strip {
+    grid-template-columns: 1fr;
   }
 
-  .poster-notes div {
-    padding: 10px 11px;
+  .poster-highlight,
+  .poster-highlight img {
+    height: 128px;
+    min-height: 128px;
   }
 
-  .poster-notes dd {
-    font-size: 0.92rem;
+  .poster-food-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .poster-food-strip b,
+  .poster-food-strip span {
+    min-height: 48px;
+  }
+
+  .poster-footer-note {
+    grid-template-columns: 1fr;
   }
 
   .food-card h3 {
