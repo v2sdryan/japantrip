@@ -4,10 +4,10 @@
 
 路線重點：
 
-- Day 1：16:30 新千歲機場攞車，住札幌
-- Day 2：札幌去富良野，Farm Tomita、Lavender East、Ningle Terrace
-- Day 3：美瑛、四季彩之丘、青池、白鬚瀑布
-- Day 4：富良野南返，支笏湖慢行，住千歲或支笏湖
+- Day 1：16:30 新千歲機場攞車，住洞爺湖，晚上看洞爺湖煙花
+- Day 2：洞爺湖遊客中心、有珠山 Ropeway，長途轉場住富良野
+- Day 3：富良野，Farm Tomita、Lavender East、芝士工房、Ningle Terrace
+- Day 4：美瑛、四季彩之丘、青池、白鬚瀑布，黃昏返千歲
 - Day 5：千歲輕鬆半日，13:00 新千歲機場還車
 
 ## Development
