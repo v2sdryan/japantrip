@@ -57,7 +57,7 @@ function App() {
         <div className="route-copy">
           <SectionTitle
             title="五日四夜自駕節奏"
-            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。重點係少搬酒店、避開札幌市中心、每日留足食飯同洗手間時間。"
+            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。第一晚住札幌，但只入城一次，之後重點係少搬酒店、避開複雜市中心路段、每日留足食飯同洗手間時間。"
           />
           <DayTabs selectedDay={selectedDay} onSelectDay={onSelectDay} />
           <DayDetail day={selectedDay} onStopFocus={setActiveStop} />
@@ -93,7 +93,7 @@ function App() {
       </section>
 
       <section className="section-grid" id="driver">
-        <SectionTitle title="新手海外自駕設定" text="行程已經避開登別同札幌市中心。以下係出車前同每日要守嘅簡單規則。" />
+        <SectionTitle title="新手海外自駕設定" text="行程已經改成 7 月夏季版：第一晚住札幌但不去薄野/大通核心，不去登別。以下係出車前同每日要守嘅簡單規則。" />
         <div className="safety-list">
           {safetyNotes.map((note) => (
             <div className="safety-row" key={note}>
@@ -105,7 +105,7 @@ function App() {
       </section>
 
       <section className="section-grid sources" id="sources">
-        <SectionTitle title="資料來源" text="營業時間、停車同道路 pass 出發前要再覆核一次，特別係五一黃金週。" />
+        <SectionTitle title="資料來源" text="營業時間、停車同道路 pass 出發前要再覆核一次，特別係 7 月富良野薰衣草旺季。" />
         <div className="source-links">
           {sources.map((source) => (
             <a href={source.url} key={source.url} target="_blank" rel="noreferrer">
@@ -122,7 +122,7 @@ function App() {
 function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay: (day: DayPlan) => void }) {
   return (
     <section className="hero">
-      <img src="/hokkaido-spring-roadtrip.png" alt="北海道五月自駕路線，遠方有雪山同綠色田野" />
+      <img src="/hokkaido-spring-roadtrip.png" alt="北海道夏季自駕路線，遠方有雪山同綠色田野" />
       <div className="hero-shade" />
       <header className="topbar">
         <a href="#plan" className="brand" aria-label="Japantrip 首頁">
@@ -138,9 +138,9 @@ function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay:
       </header>
       <div className="hero-content">
         <div>
-          <h1>五一北海道 4 夜親子自駕</h1>
+          <h1>7 月北海道 4 夜親子自駕</h1>
           <p>
-            16:30 新千歲攞車，最後日 13:00 新千歲還車。路線改為千歲、富良野、美瑛、支笏湖，唔去登別，亦避開札幌市中心。
+            2026/7/13-17，16:30 新千歲攞車，最後日 13:00 新千歲還車。第一晚住札幌，之後去富良野、美瑛、支笏湖同千歲；唔去登別。
           </p>
           <div className="hero-actions">
             <a href="#plan">
@@ -161,7 +161,7 @@ function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay:
             <div>
               <Clock3 size={16} />
               <b>最長日</b>
-              <small>約 3-3.75 小時含休息</small>
+              <small>約 3.75-4.75 小時含休息</small>
             </div>
             <div>
               <Fuel size={16} />
