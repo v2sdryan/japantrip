@@ -21,26 +21,31 @@ import 'leaflet/dist/leaflet.css';
 import './App.css';
 import { days, getGoogleDirectionsUrl, safetyNotes, sources, type DayPlan, type Stop, type StopKind } from './data';
 
-const dayVisualSuggestions: Record<number, { focus: string; tip: string }> = {
+const dayVisualSuggestions: Record<number, { focus: string; tip: string; bubble: string }> = {
   1: {
     focus: '洞爺湖湖畔酒店、溫泉晚餐、20:45 煙花',
     tip: '第一程較長，泊好車後唔再外出駕車。',
+    bubble: '攞車後直去酒店，今晚以安全同休息為先。',
   },
   2: {
     focus: '洞爺湖遊客中心、有珠山 Ropeway、富良野補給',
     tip: '全程最長轉場日，Ropeway 可因天氣或疲勞取消。',
+    bubble: '上午火山景點，下午長途轉場去富良野。',
   },
   3: {
     focus: 'Farm Tomita、Lavender East、芝士工房、Ningle Terrace',
     tip: '7 月薰衣草旺季，要早出發同只用正式停車場。',
+    bubble: '薰衣草、芝士、森林木屋係今日主角。',
   },
   4: {
     focus: '四季彩之丘、青池、白鬚瀑布、返千歲',
     tip: '午餐後直接南返千歲，唔再加景點。',
+    bubble: '美瑛影相日，黃昏返近機場減壓。',
   },
   5: {
     focus: '鮭魚水族館、加油、12:00 前到租車公司',
     tip: '時間緊就跳過水族館，還車優先。',
+    bubble: '最後半日輕鬆玩，還車一定行先。',
   },
 };
 
@@ -98,28 +103,46 @@ function App() {
       <section className="section-grid" id="posters">
         <SectionTitle
           title="每日圖像建議"
-          text="參考你提供嘅可愛手帳路線圖風格生成，每日一張插畫 poster；旁邊文字由網站直接顯示，確保景點、食物同駕駛提醒準確。"
+          text="參考你提供嘅可愛手帳路線圖風格生成，每日一張完整 poster；日期、景點、美食同自駕提醒已直接放入圖入面。"
         />
         <div className="poster-grid">
           {days.map((day) => {
             const suggestion = dayVisualSuggestions[day.day];
             return (
               <article className="poster-card" key={day.day}>
-                <img src={`/day-posters/day-${day.day}.jpg`} alt={`Day ${day.day} ${day.title} 可愛手帳風行程建議圖`} />
-                <div className="poster-copy">
-                  <span>Day {day.day} · {day.date}</span>
-                  <h3>{day.title}</h3>
-                  <dl>
+                <div className="poster-sheet" aria-label={`Day ${day.day} ${day.title} 圖文版行程建議`}>
+                  <img className="poster-art" src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
+                  <div className="poster-header">
+                    <span>Day {day.day} · {day.date}</span>
+                    <h3>{day.title}</h3>
+                  </div>
+                  <div className="poster-route" aria-label="當日路線">
+                    {day.routeStops.map((stop, index) => (
+                      <div className="poster-stop" key={`${stop.id}-${index}`}>
+                        {index > 0 && (
+                          <span className="poster-leg">
+                            {stop.driveFromPrevious}
+                            {stop.distanceFromPrevious ? ` · ${stop.distanceFromPrevious}` : ''}
+                          </span>
+                        )}
+                        <strong>
+                          {stop.time} · {stop.name}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="poster-bubble">{suggestion.bubble}</p>
+                  <dl className="poster-notes">
                     <div>
-                      <dt>主打</dt>
+                      <dt>景點</dt>
                       <dd>{suggestion.focus}</dd>
                     </div>
                     <div>
-                      <dt>食物</dt>
+                      <dt>美食</dt>
                       <dd>{day.foodFocus.slice(0, 3).join('、')}</dd>
                     </div>
                     <div>
-                      <dt>自駕</dt>
+                      <dt>自駕提醒</dt>
                       <dd>{suggestion.tip}</dd>
                     </div>
                   </dl>
@@ -305,6 +328,7 @@ function DayDetail({ day, onStopFocus }: { day: DayPlan; onStopFocus: (stop: Sto
                   <small>
                     <Car size={14} />
                     {stop.driveFromPrevious}
+                    {stop.distanceFromPrevious ? ` · ${stop.distanceFromPrevious}` : ''}
                   </small>
                 )}
                 {stop.food && (

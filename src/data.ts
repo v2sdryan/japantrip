@@ -10,6 +10,7 @@ export type Stop = {
   kind: StopKind;
   note: string;
   driveFromPrevious?: string;
+  distanceFromPrevious?: string;
   food?: string[];
 };
 
@@ -243,8 +244,8 @@ export const days: DayPlan[] = [
     newDriverNote: '第一日係你第一次海外自駕第一程，天色漸暗前後行車。導航請設「酒店停車場」，中途需要就入 SA/便利店休息。',
     routeStops: [
       { ...routeStops.airport, time: '16:30' },
-      { ...routeStops.toyakoHotel, driveFromPrevious: '新千歲到洞爺湖約 1 小時 45 分至 2 小時 20 分' },
-      { ...routeStops.toyakoFireworks, driveFromPrevious: '酒店泊車後步行到湖邊' },
+      { ...routeStops.toyakoHotel, driveFromPrevious: '新千歲到洞爺湖約 1 小時 45 分至 2 小時 20 分', distanceFromPrevious: '約 109km' },
+      { ...routeStops.toyakoFireworks, driveFromPrevious: '酒店泊車後步行到湖邊', distanceFromPrevious: '步行約 0.5km' },
     ],
     foodFocus: ['洞爺湖酒店晚餐', '溫泉街輕食', '便利店買水同早餐', '煙花前後不再駕車'],
     backup: '如果取車或航班延誤，取消湖邊散步，直接酒店晚餐同休息；煙花視天氣同小朋友精神決定。',
@@ -260,11 +261,11 @@ export const days: DayPlan[] = [
     newDriverNote: '呢日唔排 Farm Tomita。由洞爺湖去富良野距離長，司機覺得攰就取消 Ropeway，直接早啲出發。',
     routeStops: [
       { ...routeStops.toyakoHotel, time: '08:45' },
-      { ...routeStops.toyakoVisitor, driveFromPrevious: '洞爺湖溫泉街約 5 分鐘' },
-      { ...routeStops.usuzanRopeway, driveFromPrevious: '遊客中心約 15-20 分鐘' },
-      { ...routeStops.yuniBreak, driveFromPrevious: '有珠山到由仁/夕張約 2 小時' },
-      { ...routeStops.furanoMarche, driveFromPrevious: '休息後到富良野約 1.5-2 小時' },
-      { ...routeStops.furanoHotel, driveFromPrevious: '富良野 Marche 約 5-10 分鐘' },
+      { ...routeStops.toyakoVisitor, driveFromPrevious: '洞爺湖溫泉街約 5 分鐘', distanceFromPrevious: '約 1km' },
+      { ...routeStops.usuzanRopeway, driveFromPrevious: '遊客中心約 15-20 分鐘', distanceFromPrevious: '約 6km' },
+      { ...routeStops.yuniBreak, driveFromPrevious: '有珠山到由仁/夕張約 2 小時', distanceFromPrevious: '約 111km' },
+      { ...routeStops.furanoMarche, driveFromPrevious: '休息後到富良野約 1.5-2 小時', distanceFromPrevious: '約 119km' },
+      { ...routeStops.furanoHotel, driveFromPrevious: '富良野 Marche 約 5-10 分鐘', distanceFromPrevious: '約 1km' },
     ],
     foodFocus: ['酒店早餐', '昭和新山小食', '道之驛/便利店午餐', '富良野 Marche 晚餐候補'],
     backup: '如天氣差或司機疲累，取消有珠山 Ropeway，10:00 前離開洞爺湖，直接去富良野。',
@@ -280,12 +281,12 @@ export const days: DayPlan[] = [
     newDriverNote: '7 月中停車場會忙。每個點只用正式停車場；如果 Farm Tomita 已經太多人，Lavender East 直接跳過。',
     routeStops: [
       { ...routeStops.furanoHotel, time: '08:00' },
-      { ...routeStops.farmTomita, driveFromPrevious: '富良野住宿約 20-30 分鐘' },
-      { ...routeStops.lavenderEast, driveFromPrevious: 'Farm Tomita 約 10-15 分鐘' },
-      { ...routeStops.furanoMarche, time: '12:15', driveFromPrevious: 'Lavender East 到富良野市中心約 25-35 分鐘' },
-      { ...routeStops.furanoCheese, driveFromPrevious: '富良野市中心約 10-15 分鐘' },
-      { ...routeStops.ningleTerrace, driveFromPrevious: '芝士工房約 5-10 分鐘' },
-      { ...routeStops.furanoHotel, driveFromPrevious: 'Ningle Terrace 約 10-15 分鐘' },
+      { ...routeStops.farmTomita, driveFromPrevious: '富良野住宿約 20-30 分鐘', distanceFromPrevious: '約 10km' },
+      { ...routeStops.lavenderEast, driveFromPrevious: 'Farm Tomita 約 10-15 分鐘', distanceFromPrevious: '約 6km' },
+      { ...routeStops.furanoMarche, time: '12:15', driveFromPrevious: 'Lavender East 到富良野市中心約 25-35 分鐘', distanceFromPrevious: '約 13km' },
+      { ...routeStops.furanoCheese, driveFromPrevious: '富良野市中心約 10-15 分鐘', distanceFromPrevious: '約 5km' },
+      { ...routeStops.ningleTerrace, driveFromPrevious: '芝士工房約 5-10 分鐘', distanceFromPrevious: '約 1km' },
+      { ...routeStops.furanoHotel, driveFromPrevious: 'Ningle Terrace 約 10-15 分鐘', distanceFromPrevious: '約 5km' },
     ],
     foodFocus: ['Farm Tomita 薰衣草雪糕', '富良野 Marche', '富良野芝士工房 pizza', 'Mori no Tokei Cafe'],
     backup: '如天氣太熱或小朋友累，下午取消 Ningle Terrace，回酒店午睡；黃昏再附近晚餐。',
@@ -301,11 +302,11 @@ export const days: DayPlan[] = [
     newDriverNote: '今日係第二個長車日。午餐後唔好加景點，目標 17:30 前到千歲酒店，讓司機休息同預備還車。',
     routeStops: [
       { ...routeStops.furanoHotel, time: '08:00' },
-      { ...routeStops.shikisai, driveFromPrevious: '富良野約 45-55 分鐘' },
-      { ...routeStops.bluePond, driveFromPrevious: '四季彩之丘約 35-45 分鐘' },
-      { ...routeStops.shirahige, driveFromPrevious: '青池約 5-10 分鐘' },
-      { ...routeStops.bieiLunch, driveFromPrevious: '白鬚瀑布約 30-40 分鐘' },
-      { ...routeStops.chitoseHotel, driveFromPrevious: '美瑛到千歲約 2.5-3.5 小時，建議中途停一次' },
+      { ...routeStops.shikisai, driveFromPrevious: '富良野約 45-55 分鐘', distanceFromPrevious: '約 26km' },
+      { ...routeStops.bluePond, driveFromPrevious: '四季彩之丘約 35-45 分鐘', distanceFromPrevious: '約 15km' },
+      { ...routeStops.shirahige, driveFromPrevious: '青池約 5-10 分鐘', distanceFromPrevious: '約 3km' },
+      { ...routeStops.bieiLunch, driveFromPrevious: '白鬚瀑布約 30-40 分鐘', distanceFromPrevious: '約 20km' },
+      { ...routeStops.chitoseHotel, driveFromPrevious: '美瑛到千歲約 2.5-3.5 小時，建議中途停一次', distanceFromPrevious: '約 158km' },
     ],
     foodFocus: ['四季彩之丘 soft serve', 'Biei Senka 輕食', '便利店野餐', '千歲市區晚餐'],
     backup: '如美瑛停車場太滿，只保留四季彩之丘 + 青池；13:30 前必須開始南返千歲。',
@@ -321,9 +322,9 @@ export const days: DayPlan[] = [
     newDriverNote: '導航目的地設租車公司，不是機場客運大樓。目標 12:00 前到租車公司，13:00 deadline 前完成還車。',
     routeStops: [
       { ...routeStops.chitoseHotel, time: '09:00' },
-      { ...routeStops.chitoseSalmon, driveFromPrevious: '千歲酒店約 5-15 分鐘' },
-      { ...routeStops.returnFuel, driveFromPrevious: '水族館到油站約 10-15 分鐘' },
-      { ...routeStops.airport, time: '12:00', driveFromPrevious: '油站到租車公司約 10-20 分鐘' },
+      { ...routeStops.chitoseSalmon, driveFromPrevious: '千歲酒店約 5-15 分鐘', distanceFromPrevious: '約 2km' },
+      { ...routeStops.returnFuel, driveFromPrevious: '水族館到油站約 10-15 分鐘', distanceFromPrevious: '約 10km' },
+      { ...routeStops.airport, time: '12:00', driveFromPrevious: '油站到租車公司約 10-20 分鐘', distanceFromPrevious: '約 4km' },
       {
         id: 'airport-lunch',
         name: '還車後機場午餐',
