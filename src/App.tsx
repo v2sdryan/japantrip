@@ -21,6 +21,29 @@ import 'leaflet/dist/leaflet.css';
 import './App.css';
 import { days, getGoogleDirectionsUrl, safetyNotes, sources, type DayPlan, type Stop, type StopKind } from './data';
 
+const dayVisualSuggestions: Record<number, { focus: string; tip: string }> = {
+  1: {
+    focus: '洞爺湖湖畔酒店、溫泉晚餐、20:45 煙花',
+    tip: '第一程較長，泊好車後唔再外出駕車。',
+  },
+  2: {
+    focus: '洞爺湖遊客中心、有珠山 Ropeway、富良野補給',
+    tip: '全程最長轉場日，Ropeway 可因天氣或疲勞取消。',
+  },
+  3: {
+    focus: 'Farm Tomita、Lavender East、芝士工房、Ningle Terrace',
+    tip: '7 月薰衣草旺季，要早出發同只用正式停車場。',
+  },
+  4: {
+    focus: '四季彩之丘、青池、白鬚瀑布、返千歲',
+    tip: '午餐後直接南返千歲，唔再加景點。',
+  },
+  5: {
+    focus: '鮭魚水族館、加油、12:00 前到租車公司',
+    tip: '時間緊就跳過水族館，還車優先。',
+  },
+};
+
 const kindIcon: Record<StopKind, typeof MapPin> = {
   airport: Navigation,
   hotel: Hotel,
@@ -70,6 +93,41 @@ function App() {
             <ExternalLink size={16} />
           </a>
         </aside>
+      </section>
+
+      <section className="section-grid" id="posters">
+        <SectionTitle
+          title="每日圖像建議"
+          text="參考你提供嘅可愛手帳路線圖風格生成，每日一張插畫 poster；旁邊文字由網站直接顯示，確保景點、食物同駕駛提醒準確。"
+        />
+        <div className="poster-grid">
+          {days.map((day) => {
+            const suggestion = dayVisualSuggestions[day.day];
+            return (
+              <article className="poster-card" key={day.day}>
+                <img src={`/day-posters/day-${day.day}.jpg`} alt={`Day ${day.day} ${day.title} 可愛手帳風行程建議圖`} />
+                <div className="poster-copy">
+                  <span>Day {day.day} · {day.date}</span>
+                  <h3>{day.title}</h3>
+                  <dl>
+                    <div>
+                      <dt>主打</dt>
+                      <dd>{suggestion.focus}</dd>
+                    </div>
+                    <div>
+                      <dt>食物</dt>
+                      <dd>{day.foodFocus.slice(0, 3).join('、')}</dd>
+                    </div>
+                    <div>
+                      <dt>自駕</dt>
+                      <dd>{suggestion.tip}</dd>
+                    </div>
+                  </dl>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       <section className="section-grid" id="food">
@@ -131,6 +189,7 @@ function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay:
         </a>
         <nav aria-label="頁面導覽">
           <a href="#plan">行程</a>
+          <a href="#posters">圖像</a>
           <a href="#food">食物</a>
           <a href="#driver">自駕</a>
           <a href="#sources">來源</a>
