@@ -82,7 +82,7 @@ function App() {
             <article className="poster-card" key={day.day}>
               <img
                 className="single-day-poster"
-                src={`/day-posters/final/day-${day.day}.svg?v=20260617-tomamu`}
+                src={`/day-posters/gemini/day-${day.day}.png?v=20260617-gemini`}
                 alt={`Day ${day.day} ${day.date} ${day.title} 完整一日行程圖`}
               />
             </article>
