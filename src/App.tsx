@@ -21,34 +21,6 @@ import 'leaflet/dist/leaflet.css';
 import './App.css';
 import { days, getGoogleDirectionsUrl, safetyNotes, sources, type DayPlan, type Stop, type StopKind } from './data';
 
-const dayVisualSuggestions: Record<number, { focus: string; tip: string; bubble: string }> = {
-  1: {
-    focus: '洞爺湖湖畔酒店、溫泉晚餐、20:45 煙花',
-    tip: '第一程較長，泊好車後唔再外出駕車。',
-    bubble: '攞車後直去酒店，今晚以安全同休息為先。',
-  },
-  2: {
-    focus: '洞爺湖遊客中心、有珠山 Ropeway、富良野補給',
-    tip: '全程最長轉場日，Ropeway 可因天氣或疲勞取消。',
-    bubble: '上午火山景點，下午長途轉場去富良野。',
-  },
-  3: {
-    focus: 'Farm Tomita、Lavender East、芝士工房、Ningle Terrace',
-    tip: '7 月薰衣草旺季，要早出發同只用正式停車場。',
-    bubble: '薰衣草、芝士、森林木屋係今日主角。',
-  },
-  4: {
-    focus: '四季彩之丘、青池、白鬚瀑布、返千歲',
-    tip: '午餐後直接南返千歲，唔再加景點。',
-    bubble: '美瑛影相日，黃昏返近機場減壓。',
-  },
-  5: {
-    focus: '鮭魚水族館、加油、12:00 前到租車公司',
-    tip: '時間緊就跳過水族館，還車優先。',
-    bubble: '最後半日輕鬆玩，還車一定行先。',
-  },
-};
-
 const kindIcon: Record<StopKind, typeof MapPin> = {
   airport: Navigation,
   hotel: Hotel,
@@ -69,23 +41,6 @@ const kindLabel: Record<StopKind, string> = {
   kids: '親子',
 };
 
-const getPosterStops = (day: DayPlan) =>
-  day.routeStops.filter((stop) => stop.kind !== 'drive' && stop.kind !== 'hotel').slice(0, 5);
-
-const getPosterHighlights = (day: DayPlan) => {
-  const highlights = day.routeStops.filter((stop) => ['sight', 'kids', 'onsen', 'food'].includes(stop.kind));
-  return highlights.length >= 3 ? highlights.slice(0, 3) : day.routeStops.slice(0, 3);
-};
-
-const getRouteLeg = (stop: Stop) => {
-  if (!stop.driveFromPrevious) {
-    return '';
-  }
-  const timeMatch = stop.driveFromPrevious.match(/約\s*([^，]+?)(?:，|$)/);
-  const compactTime = timeMatch?.[1] ?? (stop.driveFromPrevious.includes('步行') ? '步行' : stop.driveFromPrevious);
-  return stop.distanceFromPrevious ? `${compactTime} · ${stop.distanceFromPrevious}` : compactTime;
-};
-
 function App() {
   const [selectedDay, setSelectedDay] = useState(days[0]);
   const [activeStop, setActiveStop] = useState<Stop | null>(selectedDay.routeStops[0]);
@@ -102,7 +57,7 @@ function App() {
         <div className="route-copy">
           <SectionTitle
             title="五日四夜自駕節奏"
-            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。第一晚住洞爺湖，之後富良野住 2 晚，最後一晚返千歲，重點係避開札幌市中心、少搬酒店、每日留足休息時間。"
+            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。第一晚住洞爺觀光酒店，Day 2-3 住 Wonderland Furano Maple，最後一晚返千歲/機場附近；不入札幌市中心，不去登別，火山博物館取消。"
           />
           <DayTabs selectedDay={selectedDay} onSelectDay={onSelectDay} />
           <DayDetail day={selectedDay} onStopFocus={setActiveStop} />
@@ -120,78 +75,18 @@ function App() {
       <section className="section-grid" id="posters">
         <SectionTitle
           title="每日圖像建議"
-          text="參考你提供嘅可愛手帳路線圖風格生成，每日一張完整 poster；日期、景點、美食同自駕提醒已直接放入圖入面。"
+          text="每一日只顯示一張完整大 poster 圖，路線、時間、公里數、住宿、美食同提醒全部已經編排入同一張圖入面。"
         />
         <div className="poster-grid">
-          {days.map((day) => {
-            const suggestion = dayVisualSuggestions[day.day];
-            const posterStops = getPosterStops(day);
-            const highlights = getPosterHighlights(day);
-            return (
-              <article className="poster-card" key={day.day}>
-                <div className="poster-sheet" aria-label={`Day ${day.day} ${day.title} 圖文版行程建議`}>
-                  <img className="poster-art" src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
-                  <div className="poster-hero">
-                    <img src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
-                    <div className="poster-title">
-                      <span>Day {day.day} · {day.date}</span>
-                      <h3>{day.title}</h3>
-                      <p>{day.base}</p>
-                    </div>
-                    <p className="poster-bubble">{suggestion.bubble}</p>
-                  </div>
-
-                  <div className="poster-map" aria-label="當日迷你路線">
-                    <div className="poster-map-head">
-                      <span>自駕路線</span>
-                      <b>{day.driveTotal}</b>
-                    </div>
-                    <ol>
-                      {posterStops.map((stop, index) => (
-                        <li key={`${stop.id}-${index}`}>
-                          <span className="poster-pin">{index + 1}</span>
-                          <div>
-                            {index > 0 && <small>{getRouteLeg(stop)}</small>}
-                            <strong>{stop.name}</strong>
-                            <em>{stop.time}</em>
-                          </div>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-
-                  <div className="poster-highlight-strip" aria-label="沿路推薦景點">
-                    {highlights.map((stop, index) => {
-                      const Icon = kindIcon[stop.kind];
-                      return (
-                        <div className="poster-highlight" key={`${stop.id}-${index}`}>
-                          <img src={`/day-posters/day-${day.day}.jpg`} alt="" aria-hidden="true" />
-                          <span>{index + 1}</span>
-                          <Icon size={15} />
-                          <strong>{stop.name}</strong>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <div className="poster-food-strip" aria-label="必吃美食">
-                    <b>必吃美食</b>
-                    {day.foodFocus.slice(0, 3).map((food, index) => (
-                      <span key={food}>
-                        <Soup size={15} />
-                        {index + 1}. {food}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="poster-footer-note">
-                    <span>自駕提醒</span>
-                    <p>{suggestion.tip}</p>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+          {days.map((day) => (
+            <article className="poster-card" key={day.day}>
+              <img
+                className="single-day-poster"
+                src={`/day-posters/final/day-${day.day}.svg?v=20260617`}
+                alt={`Day ${day.day} ${day.date} ${day.title} 完整一日行程圖`}
+              />
+            </article>
+          ))}
         </div>
       </section>
 
@@ -216,7 +111,7 @@ function App() {
       </section>
 
       <section className="section-grid" id="driver">
-        <SectionTitle title="新手海外自駕設定" text="行程已改成 7/13 第一晚住洞爺湖：不入札幌市中心，不去登別。以下係出車前同每日要守嘅簡單規則。" />
+        <SectionTitle title="新手海外自駕設定" text="行程已改成 7/13 第一晚住洞爺觀光酒店，7/14-16 住 Wonderland Furano Maple：不入札幌市中心，不去登別，不去火山博物館。" />
         <div className="safety-list">
           {safetyNotes.map((note) => (
             <div className="safety-row" key={note}>
@@ -264,7 +159,7 @@ function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay:
         <div>
           <h1>7 月北海道 4 夜親子自駕</h1>
           <p>
-            2026/7/13-17，16:30 新千歲攞車，最後日 13:00 新千歲還車。第一晚住洞爺湖，之後去富良野、美瑛同千歲；不入札幌市中心，唔去登別。
+            2026/7/13-17，16:30 新千歲攞車，最後日 13:00 新千歲還車。第一晚住洞爺觀光酒店，之後去富良野、美瑛同千歲；Day 2-3 住 Wonderland Furano Maple，不入札幌市中心，唔去登別。
           </p>
           <div className="hero-actions">
             <a href="#plan">

@@ -4,13 +4,13 @@
 
 路線重點：
 
-- Day 1：16:30 新千歲機場攞車，住洞爺湖，晚上看洞爺湖煙花
-- Day 2：洞爺湖遊客中心、有珠山 Ropeway，長途轉場住富良野
-- Day 3：富良野，Farm Tomita、Lavender East、芝士工房、Ningle Terrace
+- Day 1：新千歲攞車，先去白老食飯，再住洞爺觀光酒店，晚上看洞爺湖煙花
+- Day 2：洞爺湖出發，Lake Hill Farm，長途轉場住 Wonderland Furano Maple
+- Day 3：富良野，Farm Tomita、Lavender East，晚上森林精靈陽台
 - Day 4：美瑛、四季彩之丘、青池、白鬚瀑布，黃昏返千歲
 - Day 5：千歲輕鬆半日，13:00 新千歲機場還車
 
-網站另有每日可愛手帳風 poster 圖，用作每日景點、食物同自駕提醒嘅視覺建議。
+網站另有每日一張完整可愛手帳風 poster 圖，所有路線、時間、公里數、住宿、食物同自駕提醒已直接編入單張圖入面。
 
 ## Development
 
