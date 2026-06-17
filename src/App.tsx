@@ -57,7 +57,7 @@ function App() {
         <div className="route-copy">
           <SectionTitle
             title="五日四夜自駕節奏"
-            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。第一晚住洞爺觀光酒店，Day 2-3 住 Wonderland Furano Maple，最後一晚返千歲/機場附近；不入札幌市中心，不去登別，火山博物館取消。"
+            text="按你第一次外國自駕、香港一年駕駛經驗、2 大 2 小朋友同兩件細行李設計。第一晚改住 Tomamu，第二朝 4:00 起身坐雲海 Gondola；Day 2-3 住 Wonderland Furano Maple，最後一晚返千歲/機場附近。"
           />
           <DayTabs selectedDay={selectedDay} onSelectDay={onSelectDay} />
           <DayDetail day={selectedDay} onStopFocus={setActiveStop} />
@@ -82,7 +82,7 @@ function App() {
             <article className="poster-card" key={day.day}>
               <img
                 className="single-day-poster"
-                src={`/day-posters/final/day-${day.day}.svg?v=20260617`}
+                src={`/day-posters/final/day-${day.day}.svg?v=20260617-tomamu`}
                 alt={`Day ${day.day} ${day.date} ${day.title} 完整一日行程圖`}
               />
             </article>
@@ -111,7 +111,7 @@ function App() {
       </section>
 
       <section className="section-grid" id="driver">
-        <SectionTitle title="新手海外自駕設定" text="行程已改成 7/13 第一晚住洞爺觀光酒店，7/14-16 住 Wonderland Furano Maple：不入札幌市中心，不去登別，不去火山博物館。" />
+        <SectionTitle title="新手海外自駕設定" text="行程已改成 7/13 第一晚住 Tomamu，7/14 清晨睇雲海後去富良野，7/14-16 住 Wonderland Furano Maple：不入札幌市中心，不去登別，不去火山博物館。" />
         <div className="safety-list">
           {safetyNotes.map((note) => (
             <div className="safety-row" key={note}>
@@ -123,7 +123,7 @@ function App() {
       </section>
 
       <section className="section-grid sources" id="sources">
-        <SectionTitle title="資料來源" text="營業時間、停車同道路 pass 出發前要再覆核一次，特別係洞爺湖煙花同 7 月富良野薰衣草旺季。" />
+        <SectionTitle title="資料來源" text="營業時間、停車同道路 pass 出發前要再覆核一次，特別係 Tomamu 雲海 Gondola、7 月富良野薰衣草旺季同美瑛停車。" />
         <div className="source-links">
           {sources.map((source) => (
             <a href={source.url} key={source.url} target="_blank" rel="noreferrer">
@@ -159,7 +159,7 @@ function Hero({ selectedDay, onSelectDay }: { selectedDay: DayPlan; onSelectDay:
         <div>
           <h1>7 月北海道 4 夜親子自駕</h1>
           <p>
-            2026/7/13-17，16:30 新千歲攞車，最後日 13:00 新千歲還車。第一晚住洞爺觀光酒店，之後去富良野、美瑛同千歲；Day 2-3 住 Wonderland Furano Maple，不入札幌市中心，唔去登別。
+            2026/7/13-17，16:30 新千歲攞車，最後日 13:00 新千歲還車。第一晚住 Tomamu，第二朝 4:00 起身睇雲海，再去富良野、美瑛同千歲；Day 2-3 住 Wonderland Furano Maple。
           </p>
           <div className="hero-actions">
             <a href="#plan">

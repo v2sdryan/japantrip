@@ -14,70 +14,51 @@ const posterData = [
   {
     day: 1,
     date: '2026/7/13（一）',
-    title: '新千歲 → 白老 → 洞爺湖',
-    titleLines: ['新千歲 → 白老', '→ 洞爺湖'],
-    subtitle: '白老晚餐 × 洞爺觀光酒店 × 湖畔煙花',
-    base: '住：洞爺觀光酒店',
-    theme: ['#ff9eb3', '#8ed6d1', '#fff6e8'],
+    title: '新千歲 → Tomamu',
+    titleLines: ['新千歲 → Tomamu', '早睡準備雲海'],
+    subtitle: '16:30 攞車 × 高速直入 × 4:00 起身',
+    base: '住：Tomamu',
+    theme: ['#88a9f6', '#8ed6d1', '#f6f8ff'],
     route: [
       ['16:30', '新千歲機場攞車', 'START'],
-      ['17:35', '白老晚餐', '約45-60分 · 46km'],
-      ['19:15', '洞爺觀光酒店', '約1h10-1h30 · 79km'],
-      ['20:45', '洞爺湖煙花', '步行 · 0.5km'],
+      ['18:30', 'Tomamu 酒店', '約1h30-2h · 112km'],
+      ['19:00', '酒店晚餐', '酒店內'],
+      ['21:00', '早睡', '準備4:00起身'],
     ],
-    spots: ['白老牛 / 海鮮丼', '洞爺觀光酒店溫泉', '20:45 洞爺湖煙花'],
-    foods: ['白老牛', '白老海鮮丼', '便利店早餐補給'],
-    tips: ['第一晚較夜到，白老食飯唔好拖太耐', '泊好車後唔再外出駕車', '煙花視天氣同小朋友精神決定'],
-    bubble: '先食飯再入洞爺，今晚以安全同休息為先。',
+    spots: ['高速直入 Tomamu', '酒店晚餐', '21:00 前早睡'],
+    foods: ['機場買水小食', 'Tomamu 酒店晚餐', '早餐前小食'],
+    tips: ['第一晚唔加景點', '導航設酒店停車場', '準備保暖外套睇雲海'],
+    bubble: '今晚重點係安全到埗同早睡。',
   },
   {
     day: 2,
     date: '2026/7/14（二）',
-    title: '洞爺湖 → Lake Hill Farm → 富良野',
-    titleLines: ['洞爺湖 → Lake Hill Farm', '→ 富良野'],
-    subtitle: '湖畔早餐 × Gelato × 長途轉場',
+    title: 'Tomamu 雲海 → 富良野',
+    titleLines: ['Tomamu 雲海', '→ 富良野花田'],
+    subtitle: '4:00 起身 × 5:00 Gondola × 薰衣草',
     base: '住：Wonderland Furano Maple',
-    theme: ['#ffb36d', '#75c6b7', '#fff8e9'],
+    theme: ['#9bc8ff', '#78c7a3', '#f4fbff'],
     route: [
-      ['08:45', '洞爺觀光酒店出發', 'START'],
-      ['09:45', 'Lake Hill Farm', '約20分 · 16km'],
-      ['13:20', '由仁 / 夕張休息', '約1h20 · 84km'],
-      ['15:30', '富良野 Marche', '約1h45-2h · 119km'],
-      ['16:45', 'Wonderland Maple', '約10分 · 3km'],
+      ['04:00', '起身準備', 'START'],
+      ['04:35', '雲海纜車', '步行 · 0-1km'],
+      ['07:30', '酒店早餐', '返酒店'],
+      ['09:30', '南富良野', '約30-40分 · 36km'],
+      ['10:45', '富田農場', '約45-60分 · 44km'],
+      ['12:15', 'Lavender', '約10分 · 6km'],
+      ['15:30', 'Wonderland', '約15-25分 · 15km'],
     ],
-    spots: ['Lake Hill Farm', '富良野 Marche', 'Wonderland Maple'],
-    foods: ['Farm gelato', '便利店午餐', '富良野晚餐'],
-    tips: ['火山博物館取消', 'Lake Hill Farm 停45-60分鐘就好', '今日係長車日，中途必休息'],
-    bubble: '今日重點係轉場，唔好塞太多景點。',
+    spots: ['Unkai Terrace', '富田農場', 'Lavender East'],
+    foods: ['雲海熱飲', '酒店早餐', '薰衣草雪糕'],
+    tips: ['雲海約40%機會，睇天氣', '下午早啲入住休息', 'Ningle 改 Day 3 晚'],
+    bubble: '4點起身，下午一定要留白休息。',
   },
   {
     day: 3,
     date: '2026/7/15（三）',
-    title: '富良野花田一日',
-    titleLines: ['富良野花田一日'],
-    subtitle: '富田農場 × 薰衣草東部 × 森林精靈陽台',
-    base: '住：Wonderland Furano Maple',
-    theme: ['#c69af2', '#79c7a3', '#fff7f3'],
-    route: [
-      ['08:00', 'Wonderland 出發', 'START'],
-      ['08:45', '富田農場', '約20-30分 · 11km'],
-      ['10:35', 'Lavender East', '約10-15分 · 6km'],
-      ['12:15', '富良野 Marche', '約25-35分 · 13km'],
-      ['19:00', '森林精靈陽台', '約10-15分 · 5km'],
-      ['20:30', '返 Wonderland', '約10分 · 4km'],
-    ],
-    spots: ['富田農場', '薰衣草東部', '森林精靈陽台（夜）'],
-    foods: ['薰衣草雪糕', '富良野 Marche', '富良野咖喱 / 蛋包飯'],
-    tips: ['7月中花田旺季，越早到越好', '只用正式停車場', '夜遊森林精靈陽台，攰就取消'],
-    bubble: '薰衣草同夜晚森林小屋係今日主角。',
-  },
-  {
-    day: 4,
-    date: '2026/7/16（四）',
-    title: '美瑛 → 千歲 / 機場附近',
-    titleLines: ['美瑛 → 千歲', '/ 機場附近'],
+    title: '美瑛 + 森林精靈陽台',
+    titleLines: ['美瑛重點遊', '+ 森林精靈陽台'],
     subtitle: '四季彩之丘 × 青池 × 白鬚瀑布',
-    base: '住：新千歲機場附近',
+    base: '住：Wonderland Furano Maple',
     theme: ['#7dbcf2', '#8bd28b', '#fff9ee'],
     route: [
       ['08:00', 'Wonderland 出發', 'START'],
@@ -85,12 +66,32 @@ const posterData = [
       ['10:55', '白金青池', '約35-45分 · 15km'],
       ['11:40', '白鬚瀑布', '約5-10分 · 3km'],
       ['13:00', '美瑛午餐', '約30-40分 · 20km'],
-      ['17:30', '千歲酒店', '約2.5-3.5h · 158km'],
+      ['15:30', '返 Wonderland', '約45-60分 · 38km'],
+      ['19:00', '森林精靈陽台', '約10-15分 · 5km'],
     ],
-    spots: ['四季彩之丘', '白金青池', '白鬚瀑布'],
-    foods: ['花田雪糕', 'Biei Senka', '千歲晚餐'],
-    tips: ['午餐後直接南返千歲', '唔再加札幌或登別', '13:30前最好開始返程'],
-    bubble: '美瑛影相日，下午要果斷返機場附近。',
+    spots: ['四季彩之丘', '白金青池', '森林精靈陽台（夜）'],
+    foods: ['花田雪糕', 'Biei Senka', '富良野晚餐'],
+    tips: ['前日早起，下午要休息', 'Ningle 攰就取消', '只用正式停車場'],
+    bubble: '美瑛影相日，夜晚行森林小屋。',
+  },
+  {
+    day: 4,
+    date: '2026/7/16（四）',
+    title: '富良野 → 千歲',
+    titleLines: ['富良野慢早', '→ 千歲 / 機場附近'],
+    subtitle: '市區補給 × 由仁休息 × 還車前一晚',
+    base: '住：新千歲機場附近',
+    theme: ['#ffb36d', '#75c6b7', '#fff8e9'],
+    route: [
+      ['09:30', 'Wonderland 出發', 'START'],
+      ['10:00', '富良野 Marche', '約5-10分 · 2km'],
+      ['14:45', '由仁/夕張休息', '約1h45-2h · 119km'],
+      ['16:30', '千歲酒店', '約40-60分 · 39km'],
+    ],
+    spots: ['富良野 Marche', '由仁/夕張休息', '千歲酒店'],
+    foods: ['富良野午餐', '休息站小食', '千歲晚餐'],
+    tips: ['Lake Hill Farm 主線取消', '唔入札幌市中心', '早返千歲減還車壓力'],
+    bubble: '今日唔貪心，返近機場最重要。',
   },
   {
     day: 5,
@@ -137,15 +138,16 @@ const textLines = (items, x, y, options = {}) => {
 };
 
 const routeRows = (route) => route.map(([time, place, drive], index) => {
-  const y = 365 + index * 95;
+  const gap = route.length > 6 ? 78 : 95;
+  const y = 365 + index * gap;
   const isLast = index === route.length - 1;
   return `
-    ${!isLast ? `<line x1="816" y1="${y + 35}" x2="816" y2="${y + 86}" stroke="#7bbfc3" stroke-width="6" stroke-dasharray="10 10" stroke-linecap="round"/>` : ''}
+    ${!isLast ? `<line x1="816" y1="${y + 35}" x2="816" y2="${y + gap - 9}" stroke="#7bbfc3" stroke-width="6" stroke-dasharray="10 10" stroke-linecap="round"/>` : ''}
     <circle cx="816" cy="${y}" r="27" fill="#0e8a95"/>
     <text x="816" y="${y + 9}" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">${index + 1}</text>
-    <text x="858" y="${y - 8}" font-size="24" font-weight="900" fill="#183238">${escapeXml(place)}</text>
-    <text x="858" y="${y + 24}" font-size="22" font-weight="900" fill="#f06f66">${escapeXml(time)}</text>
-    ${drive !== 'START' ? `<text x="858" y="${y + 55}" font-size="19" font-weight="800" fill="#597076">${escapeXml(drive)}</text>` : ''}
+    <text x="858" y="${y - 8}" font-size="${route.length > 6 ? 22 : 24}" font-weight="900" fill="#183238">${escapeXml(place)}</text>
+    <text x="858" y="${y + 23}" font-size="${route.length > 6 ? 20 : 22}" font-weight="900" fill="#f06f66">${escapeXml(time)}</text>
+    ${drive !== 'START' ? `<text x="858" y="${y + 49}" font-size="${route.length > 6 ? 16 : 18}" font-weight="800" fill="#597076">${escapeXml(drive)}</text>` : ''}
   `;
 }).join('\n');
 
@@ -163,26 +165,27 @@ const heroScene = (data) => {
   if (data.day === 1) {
     return `${common}
       <g clip-path="url(#hero-${data.day})">
-        <ellipse cx="395" cy="616" rx="360" ry="94" fill="#73c8e9" opacity="0.82"/>
-        <path d="M158 646 C286 590 420 600 596 654" fill="none" stroke="#fff" stroke-width="10" opacity="0.72"/>
-        <path d="M110 718 C220 632 345 620 468 718" fill="none" stroke="#616bd6" stroke-width="16" stroke-linecap="round" stroke-dasharray="18 18"/>
-        <rect x="142" y="626" width="118" height="62" rx="22" fill="${accent}" stroke="#27333a" stroke-width="4"/>
-        <circle cx="172" cy="690" r="16" fill="#27333a"/><circle cx="232" cy="690" r="16" fill="#27333a"/>
-        <path d="M468 430 l16 -42 l18 42 l42 -18 l-24 38 l36 24 l-44 4 l-8 44 l-26 -36 l-42 14 l26 -36 l-30 -34 Z" fill="#ffd563" opacity="0.92"/>
-        <text x="520" y="648" font-size="28" font-weight="900" fill="#0e5962">洞爺湖畔</text>
+        <rect x="42" y="300" width="690" height="420" fill="#1d3358" opacity="0.28"/>
+        <circle cx="620" cy="368" r="46" fill="#fff3a6" opacity="0.92"/>
+        <path d="M42 622 C150 520 230 540 344 622 C446 490 550 498 734 620 L734 720 L42 720 Z" fill="#6c84c7"/>
+        <path d="M88 648 C210 548 318 568 442 660 C526 566 620 576 724 656" fill="none" stroke="#d9e6ff" stroke-width="12" opacity="0.75"/>
+        <path d="M104 706 C220 630 340 620 488 710" fill="none" stroke="#616bd6" stroke-width="16" stroke-linecap="round" stroke-dasharray="18 18"/>
+        <rect x="150" y="620" width="118" height="62" rx="22" fill="${accent}" stroke="#27333a" stroke-width="4"/>
+        <circle cx="180" cy="684" r="16" fill="#27333a"/><circle cx="240" cy="684" r="16" fill="#27333a"/>
+        <text x="474" y="648" font-size="30" font-weight="900" fill="#fff">Tomamu 早睡</text>
       </g>`;
   }
 
   if (data.day === 2) {
     return `${common}
       <g clip-path="url(#hero-${data.day})">
-        <path d="M86 666 C196 560 320 540 438 642 C526 548 624 548 734 626" fill="none" stroke="#5f6bd8" stroke-width="18" stroke-linecap="round" stroke-dasharray="22 18"/>
-        <rect x="348" y="598" width="118" height="60" rx="20" fill="#6fb5ff" stroke="#27333a" stroke-width="4"/>
-        <circle cx="378" cy="660" r="15" fill="#27333a"/><circle cx="438" cy="660" r="15" fill="#27333a"/>
-        <path d="M118 542 C160 476 226 472 260 542 Z" fill="#fff" stroke="#915c2c" stroke-width="5"/>
-        <path d="M162 542 l34 112 l34 -112 Z" fill="#e8b56a" stroke="#915c2c" stroke-width="4"/>
-        <circle cx="196" cy="520" r="34" fill="#f6c174"/>
-        <text x="502" y="632" font-size="28" font-weight="900" fill="#0e5962">Lake Hill Farm</text>
+        <circle cx="610" cy="362" r="54" fill="#ffe58a" opacity="0.95"/>
+        <path d="M42 590 C146 548 220 582 300 540 C398 488 508 536 604 506 C660 488 706 500 734 514 L734 720 L42 720 Z" fill="#ffffff" opacity="0.92"/>
+        <path d="M42 632 C160 590 260 628 370 592 C486 554 596 596 734 560 L734 720 L42 720 Z" fill="#dff5ff" opacity="0.88"/>
+        ${Array.from({ length: 5 }, (_, i) => `<path d="M${92 + i * 120} 720 C${132 + i * 88} 650 ${156 + i * 82} 602 ${214 + i * 86} 540" fill="none" stroke="${i % 2 ? '#8e69d6' : '#b778e9'}" stroke-width="18" stroke-linecap="round" opacity="0.78"/>`).join('')}
+        <rect x="132" y="472" width="156" height="72" rx="16" fill="#fff" stroke="#27333a" stroke-width="5"/>
+        <text x="210" y="518" text-anchor="middle" font-size="28" font-weight="900" fill="#0e5962">5:00</text>
+        <text x="430" y="632" font-size="30" font-weight="900" fill="#0e5962">雲海 + 薰衣草</text>
       </g>`;
   }
 
@@ -195,7 +198,8 @@ const heroScene = (data) => {
         <path d="M506 532 h108 v72 h-108 Z" fill="#714e3e" stroke="#fff" stroke-width="5"/>
         <path d="M492 532 l68 -58 l68 58 Z" fill="#3f6e56" stroke="#fff" stroke-width="5"/>
         <circle cx="600" cy="424" r="38" fill="#ffeaa0" opacity="0.9"/>
-        <text x="284" y="430" font-size="30" font-weight="900" fill="#6d3faa">Lavender Day</text>
+        <ellipse cx="470" cy="518" rx="118" ry="46" fill="#68c8ed" opacity="0.88"/>
+        <text x="284" y="430" font-size="30" font-weight="900" fill="#0e5962">Biei + Ningle</text>
       </g>`;
   }
 
@@ -229,13 +233,16 @@ const miniScene = (day, index, x, y, accent, green) => {
   const sky = `<rect x="${x}" y="${y}" width="286" height="205" rx="22" fill="#dff5ff"/>`;
   const hill = `<path d="M${x} ${y + 126} C${x + 82} ${y + 54} ${x + 164} ${y + 90} ${x + 286} ${y + 52} L${x + 286} ${y + 205} L${x} ${y + 205} Z" fill="${green}" opacity="0.76"/>`;
   if (day === 1 && index === 0) {
-    return `${sky}${hill}<rect x="${x + 70}" y="${y + 72}" width="126" height="78" rx="16" fill="#ffd89a" stroke="#70492e" stroke-width="5"/><text x="${x + 132}" y="${y + 122}" text-anchor="middle" font-size="26" font-weight="900" fill="#70492e">白老牛</text>`;
+    return `${sky}<rect x="${x}" y="${y}" width="286" height="205" rx="22" fill="#314f87"/>${hill}<rect x="${x + 86}" y="${y + 112}" width="116" height="58" rx="20" fill="${accent}" stroke="#27333a" stroke-width="5"/><text x="${x + 144}" y="${y + 72}" text-anchor="middle" font-size="24" font-weight="900" fill="#fff">Tomamu</text>`;
   }
   if (day === 1) {
-    return `${sky}<ellipse cx="${x + 152}" cy="${y + 132}" rx="150" ry="54" fill="#75c7ea"/>${hill}<circle cx="${x + 222}" cy="${y + 58}" r="28" fill="#ffd563"/>`;
+    return `${sky}<rect x="${x}" y="${y}" width="286" height="205" rx="22" fill="#26395f" opacity="0.86"/><circle cx="${x + 220}" cy="${y + 54}" r="26" fill="#fff0a6"/>${hill}<text x="${x + 142}" y="${y + 126}" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">早睡</text>`;
   }
   if (day === 2 && index === 0) {
-    return `${sky}${hill}<path d="M${x + 88} ${y + 68} C${x + 124} ${y + 20} ${x + 178} ${y + 28} ${x + 202} ${y + 72}" fill="#fff" stroke="#8a5c35" stroke-width="5"/><path d="M${x + 122} ${y + 78} l32 ${y + 92 - y} l32 -92 Z" fill="#e7aa58" stroke="#8a5c35" stroke-width="5"/>`;
+    return `${sky}<path d="M${x} ${y + 120} C${x + 68} ${y + 84} ${x + 110} ${y + 132} ${x + 168} ${y + 92} C${x + 210} ${y + 64} ${x + 246} ${y + 90} ${x + 286} ${y + 74} L${x + 286} ${y + 205} L${x} ${y + 205} Z" fill="#fff"/><circle cx="${x + 220}" cy="${y + 48}" r="28" fill="#ffe58a"/><text x="${x + 96}" y="${y + 72}" font-size="25" font-weight="900" fill="#0e5962">雲海</text>`;
+  }
+  if (day === 2) {
+    return `${sky}${Array.from({ length: 4 }, (_, i) => `<path d="M${x + i * 80} ${y + 205} C${x + 42 + i * 52} ${y + 144} ${x + 58 + i * 44} ${y + 92} ${x + 108 + i * 48} ${y + 42}" fill="none" stroke="${i % 2 ? '#8e69d6' : '#b778e9'}" stroke-width="16" stroke-linecap="round" opacity="0.86"/>`).join('')}<circle cx="${x + 224}" cy="${y + 52}" r="26" fill="#ffe58a"/>`;
   }
   if (day === 3) {
     return `${sky}${Array.from({ length: 5 }, (_, i) => `<path d="M${x + i * 70} ${y + 205} C${x + 44 + i * 48} ${y + 142} ${x + 62 + i * 36} ${y + 90} ${x + 112 + i * 38} ${y + 44}" fill="none" stroke="${i % 2 ? '#9c6de1' : '#c57dea'}" stroke-width="16" opacity="0.9"/>`).join('')}<circle cx="${x + 230}" cy="${y + 48}" r="26" fill="#ffe48c"/>`;
