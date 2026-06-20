@@ -5,8 +5,8 @@
 路線重點：
 
 - Day 1：新千歲攞車，直入 Tomamu，酒店晚餐同早睡
-- Day 2：4:00 起身，Tomamu 雲海 Gondola，之後去富田農場、Lavender East，住 Wonderland Furano Maple
-- Day 3：美瑛、四季彩之丘、青池、白鬚瀑布，晚上森林精靈陽台
+- Day 2：4:00 起身，Tomamu 雲海、水之教堂，之後去富田農場、Lavender East、日之出公園、芝士工房，晚上森林精靈陽台
+- Day 3：美瑛四季彩之丘、新榮之丘、Zerubu 之丘、Ken & Mary 之樹、青池、白鬚瀑布
 - Day 4：富良野慢早，午餐後返千歲 / 機場附近
 - Day 5：千歲輕鬆半日，13:00 新千歲機場還車
 

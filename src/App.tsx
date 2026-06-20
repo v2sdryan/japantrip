@@ -79,12 +79,30 @@ function App() {
         />
         <div className="poster-grid">
           {days.map((day) => (
-            <article className="poster-card" key={day.day}>
-              <img
-                className="single-day-poster"
-                src={`/day-posters/gemini/day-${day.day}.png?v=20260617-gemini`}
-                alt={`Day ${day.day} ${day.date} ${day.title} 完整一日行程圖`}
-              />
+            <article className={`poster-card ${day.day === 2 || day.day === 3 ? 'reference-card' : ''}`} key={day.day}>
+              {day.day === 2 || day.day === 3 ? (
+                <div className={`reference-poster-crop reference-day-${day.day}`}>
+                  <img
+                    src="/day-posters/reference/day-2-3-itinerary.jpeg?v=20260620"
+                    alt={`Day ${day.day} ${day.date} ${day.title} 新版完整一日行程圖`}
+                  />
+                  {day.day === 2 ? (
+                    <>
+                      <span aria-hidden="true" className="poster-time-fix unkai-time">04:30-06:15</span>
+                      <span aria-hidden="true" className="poster-time-fix chapel-time">06:30-07:15</span>
+                      <span aria-hidden="true" className="poster-time-fix breakfast-time">07:20-08:20</span>
+                    </>
+                  ) : (
+                    <span aria-hidden="true" className="poster-time-fix shikisai-time">08:40-10:00</span>
+                  )}
+                </div>
+              ) : (
+                <img
+                  className="single-day-poster"
+                  src={`/day-posters/gemini/day-${day.day}.png?v=20260617-gemini`}
+                  alt={`Day ${day.day} ${day.date} ${day.title} 完整一日行程圖`}
+                />
+              )}
             </article>
           ))}
         </div>
